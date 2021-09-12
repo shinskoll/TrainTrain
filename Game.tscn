@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://train.png" type="Texture" id=1]
+[ext_resource path="res://Train.gd" type="Script" id=2]
+[ext_resource path="res://Game.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 42.7495 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 0.667465, 283.714, 1023.23, 283.714 )
+default_color = Color( 0.898039, 1, 0.4, 1 )
+
+[node name="Train" type="KinematicBody2D" parent="."]
+position = Vector2( 155, 284 )
+scale = Vector2( 0.3, 0.3 )
+z_index = 1
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Train"]
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Train"]
+shape = SubResource( 1 )
+
+[node name="slowgear" type="Timer" parent="Train"]
+wait_time = 0.5
+one_shot = true
+
+[node name="speedometer" type="Label" parent="Train"]
+margin_top = -140.0
+margin_right = 40.0
+margin_bottom = -126.0
+rect_scale = Vector2( 2, 2 )
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gearview" type="Label" parent="Train"]
+margin_top = -250.0
+margin_right = 40.0
+margin_bottom = -236.0
+rect_scale = Vector2( 4, 4 )
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score" type="Label" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 100.0
+margin_bottom = 34.0
+rect_scale = Vector2( 3, 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GareInc" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Stop" type="Label" parent="."]
+margin_left = 300.0
+margin_top = 20.0
+margin_right = 360.0
+margin_bottom = 50.0
+rect_scale = Vector2( 6, 6 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="GareInc" to="." method="_on_GareInc_timeout"]

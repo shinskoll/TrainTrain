@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Gare.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 61.4865, 5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.4375, 4.9375 )
+
+[node name="Gare" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AreaBAD" type="Area2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="AreaBAD"]
+scale = Vector2( 0.987514, 1 )
+points = PoolVector2Array( -62.1507, 0.0478745, 62.2639, 0.0478745 )
+width = 30.0
+default_color = Color( 1, 0.678431, 0.262745, 1 )
+
+[node name="BAD" type="CollisionShape2D" parent="AreaBAD"]
+shape = SubResource( 1 )
+
+[node name="AreaOK" type="Area2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="AreaOK"]
+scale = Vector2( 0.987514, 1 )
+points = PoolVector2Array( -19.3369, -0.00143099, 19.3668, 0 )
+width = 30.0
+default_color = Color( 1, 0.94902, 0.4, 1 )
+
+[node name="OK" type="CollisionShape2D" parent="AreaOK"]
+shape = SubResource( 1 )
+
+[node name="AreaPERFECT" type="Area2D" parent="."]
+
+[node name="Line2D2" type="Line2D" parent="AreaPERFECT"]
+points = PoolVector2Array( -7.3806, -0.0133095, 7.4382, -0.0133095 )
+width = 30.0
+default_color = Color( 0.4, 1, 0.760784, 1 )
+
+[node name="PERFECT" type="CollisionShape2D" parent="AreaPERFECT"]
+shape = SubResource( 2 )
